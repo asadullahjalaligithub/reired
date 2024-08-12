@@ -1,0 +1,115 @@
+<?php
+    require("fdf/fpdf.php");
+require('Database.php');
+if(isset($_GET['filename']) && isset($_GET['no']))
+{
+$filename=$_GET['filename'];
+    $no=$_GET['no'];
+$query='SELECT applicant.applicant_passportno,applicant_firstname,applicant_lastname, application.application_visaType, application.application_enterby, application.application_invoice_no, application.application_referenceno, point_of_contact.poc_firstname
+FROM point_of_contact
+    inner JOIN application ON application.application_poc_id = point_of_contact.poc_id
+    inner JOIN applicant ON application.application_applicant_id = applicant.applicant_id
+where application.application_referenceno="'.$no.'"';
+
+  $result=mysqli_query($connection,$query);
+  //  $count=mysqli_num_rows($result);
+    
+$pdf = new FPDF('L','in',array(4,6));
+//$pdf = new FPDF('L');
+//$pdf->AddPage();
+$pdf->SetFont('helvetica','',14);
+//for($i=1;$i<=3;$i++)  
+  //$pdf->Image($filepath,10,(15*$i),30);
+//$pdf->Image($filepath,10,50,280,150,'png');
+//$pdf->Image($filepath,15,102,180,80,'png');
+//$pdf->Image($filepath,15,202,180,80,'png');
+//$pdf->Image($filepath,15,302,180,80,'png');
+//$pdf->Image($filepath,1,44,395,40,'png');
+//$pdf->Image($filepath,1,86,395,40,'png');
+  //  $row=mysqli_fetch_assoc($result);
+//for($i=0;$i<=$count;$i++)
+$count=0;
+while($row=mysqli_fetch_assoc($result))
+{
+    $count++;
+    $fullname=$row['applicant_firstname'].' '.$row['applicant_lastname'];
+    $righttext=$row['application_visaType']." ".$row['application_invoice_no'];
+    $pdf->AddPage();
+    $pdf->ln(0.1);
+    $pdf->Cell(0,0,"REIRED Tourism Services",0,0,'C');
+    $pdf->ln(0.4);
+    $pdf->multiCell(0,0,$row['application_enterby']);
+    $pdf->Cell(4.5);
+    $pdf->multiCell(0.8,0.2,$righttext);
+    if(strlen($righttext)>15)
+    $pdf->ln(0.3);
+    else
+    $pdf->ln(0.8);
+    $pdf->Cell(0,0,$no,0,0,'C');
+    $pdf->ln(0.2);
+   // if($i==$count)
+   // $index=" X1";
+   // else
+    //$index=$row['application_passportno'];
+    $pdf->cell(0,0,$fullname.$index,0,0,'C');
+    $pdf->Image('barcodeimages/'.$filename,1.1,0.6,3.8,1.3,'png');
+}
+// last slip
+$result=mysqli_query($connection,$query);
+    $row=mysqli_fetch_assoc($result);
+    {
+    $count++;
+    $fullname=$row['applicant_firstname'].' '.$row['applicant_lastname'];
+    $righttext=$row['application_visaType']." ".$row['application_invoice_no'];
+    $pdf->AddPage();
+    $pdf->ln(0.1);
+    $pdf->Cell(0,0,"REIRED Tourism Services",0,0,'C');
+    $pdf->ln(0.4);
+    $pdf->multiCell(0,0,$row['application_enterby']);
+    $pdf->Cell(4.5);
+    $pdf->multiCell(0.8,0.2,$righttext);
+    if(strlen($righttext)>15)
+    $pdf->ln(0.3);
+    else
+    $pdf->ln(0.8);
+    $pdf->Cell(0,0,$no,0,0,'C');
+    $pdf->ln(0.2);
+   // if($i==$count)
+   // $index=" X1";
+   // else
+    //$index=$row['application_passportno'];
+    $pdf->cell(0,0,$fullname.' X '.$count,0,0,'C');
+    $pdf->Image('barcodeimages/'.$filename,1.1,0.6,3.8,1.3,'png');    
+    }
+    /* lead pax
+    $fullname=$row['poc_firstname'].' '.$row['poc_lastname'];
+    $righttext=$row['application_visaType']." ".$row['application_invoice_no'];
+    $pdf->AddPage();
+    $pdf->ln(0.1);
+    $pdf->Cell(0,0,"REIRED Tourism Services",0,0,'C');
+    $pdf->ln(0.4);
+    $pdf->multiCell(0,0,$row['application_enterby']);
+    $pdf->Cell(4.5);
+    $pdf->multiCell(0.8,0.2,$righttext);
+    if(strlen($righttext)>15)
+    $pdf->ln(0.3);
+    else
+    $pdf->ln(0.8);
+    $pdf->Cell(0,0,$no,0,0,'C');
+    $pdf->ln(0.2);
+   // if($i==$count)
+    $index=" X1";
+   // else
+   // $index=$row['application_passportno'];
+    $pdf->cell(0,0,$row['poc_firstname'].' | '.$index,0,0,'C');*/
+ //   $pdf->Image('barcodeimages/'.$filename,1.1,0.6,3.8,1.3,'png');
+//$pdf->Image($filepath,0.3,1.9,2.5,1.6,'png');
+//$pdf->Image($filepath,0.3,3.4,2.5,1.6,'png');
+//$pdf->Image($filepath,1,1.4,1.5,1.2,'png');
+//$pdf->Image($filepath,1,2.6,1.5,1.2,'png');
+      ob_end_clean();
+$pdf->Output($filename.'.pdf', 'I');
+
+unlink('barcodeimages/'.$filename);   
+}
+?>

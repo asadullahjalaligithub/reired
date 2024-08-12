@@ -1,0 +1,89 @@
+runtime: php83 # Choose the appropriate PHP runtime version
+
+runtime_config:
+  document_root: .
+
+handlers:
+  # Serve all static files directly
+  - url: /(.*\.(css|js|gif|png|jpg|ico|txt|woff|woff2|svg))
+    static_files: \1
+    upload: (.*\.(css|js|gif|png|jpg|ico|txt|woff|woff2|svg))
+
+  # Serve Bootstrap CSS files
+  # - url: /bootstrap/css
+  #   static_dir: bootstrap/css
+
+  # # Serve Bootstrap JS files
+  # - url: /bootstrap/js
+  #   static_dir: bootstrap/js
+
+  # # Serve static CSS files
+  # - url: /css
+  #   static_dir: css
+
+  # # Serve static images
+  # - url: /images
+  #   static_dir: images
+
+  # # Serve jQuery library files
+  # - url: /jquery
+  #   static_dir: jquery
+
+  # # Serve FPDF library files
+  # - url: /fpdf
+  #   static_dir: fpdf
+
+  # # Serve PHP Barcode generating files
+  # - url: /phpbarcode
+  #   static_dir: phpbarcode
+
+  # # Serve TCPDF library files
+  # - url: /tcpdf
+  #   static_dir: tcpdf
+
+  # Specific handlers for PHP files handling AJAX requests and other operations
+  # - url: /checkuser.php
+  #   script: checkuser.php
+
+  # - url: /dashboard.php
+  #   script: dashboard.php
+
+  # - url: /application.php
+  #   script: application.php
+
+  # - url: /application-php.php
+  #   script: application-php.php
+
+  # - url: /index.php
+  #   script: index.php
+
+  # # Add handlers for other PHP files as needed
+  # # Example for another AJAX handler
+  # - url: /another-ajax-handler.php
+  #   script: another-ajax-handler.php
+
+  # Catch-all handler for other PHP files
+  # - url: /(.*\.php)
+  #   script: \1
+
+  # # Fallback handler to route all other requests to index.php
+  - url: /.*
+    script: auto
+entrypoint: serve handler.php
+
+# Optional: Adjust the automatic scaling settings as needed
+automatic_scaling:
+  min_instances: 1
+  max_instances: 10
+  # Adjust based on your application's needs
+  # min_idle_instances: 1
+  # max_concurrent_requests: 50
+
+#entrypoint:
+#   serve handler.php
+
+env_variables:
+  CLOUDSQL_USER: root
+  CLOUDSQL_DB: catalogdb
+  CLOUDSQL_PASSWORD: mydb1
+  CLOUDSQL_DSN: "/cloudsql/demo123-427614:us-central1:mydb1"

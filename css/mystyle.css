@@ -1,0 +1,60 @@
+ * {
+     -webkit-box-sizing: border-box;
+     box-sizing: border-box;
+ }
+
+ .first-column {
+     min-height: 200px;
+ }
+
+ .second-column {
+     min-height: 800px;
+ }
+
+ #logoutbutton {
+     position: absolute;
+     right: 10px;
+     top: 10px;
+     width: 100px;
+     font-weight: bolder;
+
+ }
+
+ .logout-button .btn,
+ logout-button .btn:active {
+     background-color: #027DFB;
+ }
+
+ .logout-button .dropdown-menu a {
+     color: #027DFB;
+ }
+
+ input[type='date'] {
+     width: 150px;
+     padding: 0px;
+     text-align: center;
+ }
+
+ .left-menus {
+     text-align: center;
+     font-size: 20px;
+     width: 200px;
+ }
+
+ input[type='checkbox'] {
+     border: solid 1px #cccccc;
+     border-radius:1px;
+ }
+
+ .left-menus a {
+     text-decoration: none;
+ }
+
+ .footer {
+     position: relative;
+     top: 100px;
+     text-align: center;
+     padding: 10px;
+     color: #027DFB;
+     font-weight: bolder;
+ }
