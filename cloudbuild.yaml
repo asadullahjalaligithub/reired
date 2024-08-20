@@ -1,22 +1,21 @@
 steps:
   # Step 2: Run PHP linting (optional, to check for syntax errors)
-  - name: "gcr.io/cloud-builders/php"
-    args:
-      ["-l", "-d", "display_errors=stderr", "-d", "log_errors=stderr", "*.php"]
-    dir: "./" # Replace with the path to your PHP files if they're in a subdirectory
+  # - name: "gcr.io/cloud-builders/php"
+  #   args:
+  #     ["-l", "-d", "display_errors=stderr", "-d", "log_errors=stderr", "*.php"]
+  #   dir: "./" # Replace with the path to your PHP files if they're in a subdirectory
 
   # Step 3: Deploy to App Engine
-  - name: "gcr.io/cloud-builders/gcloud"
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "gcloud"
     args: ["app", "deploy", "--quiet"]
-    dir: "./" # Replace with the path to your app.yaml if it's in a subdirectory
+    dir: "." # Replace with the path to your app.yaml if it's in a subdirectory
 
 timeout: "900s" # 15 minutes timeout, adjust as needed
 
 # (Optional) Substitute variables for dynamic settings
 substitutions:
-
   _SERVICE_NAME: "appengine.googleapis.com" # Replace with your App Engine service name
-
 
 # Specify the App Engine environment (standard or flexible)
 options:
