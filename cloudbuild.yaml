@@ -19,7 +19,7 @@ timeout: "900s" # 15 minutes timeout, adjust as needed
 
 # (Optional) Substitute variables for dynamic settings
 substitutions:
-  _SERVICE_NAME: "default" # Replace with your App Engine service name
+  _SERVICE_NAME: "appengine.googleapis.com" # Replace with your App Engine service name
 
 # Specify the App Engine environment (standard or flexible)
 options:
