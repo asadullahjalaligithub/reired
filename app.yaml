@@ -86,4 +86,6 @@ env_variables:
   CLOUDSQL_USER: root
   CLOUDSQL_DB: tvac
   CLOUDSQL_PASSWORD: AdminPassword
-  CLOUDSQL_DSN: "/cloudsql/demo123-427614:us-central1:mydb1"
+
+  CLOUDSQL_DSN: "striped-bonfire-432413-c0:us-central1:tvacdatabase"
+
