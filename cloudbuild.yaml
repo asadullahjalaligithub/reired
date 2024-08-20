@@ -1,4 +1,4 @@
-steps:
+"steps:
   # Step 1: Deploy to App Engine
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: "gcloud"
@@ -14,4 +14,4 @@ substitutions:
 # Specify the App Engine environment (standard or flexible)
 options:
   env: ["standard"] # 'standard' or 'flexible' for the App Engine environment
-  logging: CLOUD_LOGGING_ONLY
+  logging: "CLOUD_LOGGING_ONLY"
