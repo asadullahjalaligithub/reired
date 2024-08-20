@@ -1,9 +1,4 @@
 steps:
-  # Step 1: Install Composer dependencies (if your PHP project uses Composer)
-  - name: "gcr.io/cloud-builders/composer"
-    args: ["install"]
-    dir: "./" # Replace with the path to your app if it's in a subdirectory
-
   # Step 2: Run PHP linting (optional, to check for syntax errors)
   - name: "gcr.io/cloud-builders/php"
     args:
