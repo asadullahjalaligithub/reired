@@ -14,3 +14,4 @@ substitutions:
 # Specify the App Engine environment (standard or flexible)
 options:
   env: ["standard"] # 'standard' or 'flexible' for the App Engine environment
+  logging: CLOUD_LOGGING_ONLY
