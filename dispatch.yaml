@@ -1,0 +1,9 @@
+dispatch:
+- url: "www.asansaraf.com/*"
+ service: default
+- url: "asansaraf.com/*"
+ service: default
+- url: "stage.asansaraf.com/*"
+ service: stage
+- url: "www.stage.asansaraf.com/*"
+ service: stage

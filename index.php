@@ -11,7 +11,7 @@ if (isset($_GET['logout']) && $_GET['logout'] == true) {
 
 <head>
     <!-- header files of javascript -->
-    <?php require ("header-links.php"); ?>
+    <?php require("header-links.php"); ?>
     <link rel="stylesheet" type="text/css" href="css/loginstyle.css">
     <style>
         .container-fluid {
@@ -25,6 +25,7 @@ if (isset($_GET['logout']) && $_GET['logout'] == true) {
     <div class="container-fluid">
 
         <div class="wrapper fadeInDown">
+            <h1>Welcome to Sarafi Software</h1>
             <div id="formContent">
                 <!-- Tabs Titles -->
 
@@ -69,8 +70,8 @@ if (isset($_GET['logout']) && $_GET['logout'] == true) {
             </div>
         </div>
         <!-- footer -->
-        <?php require ("footer.php"); ?>
-        <?php require ("footer-links.php"); ?>
+        <?php require("footer.php"); ?>
+        <?php require("footer-links.php"); ?>
     </div>
 
     <!-- the last bootstrap file-->
