@@ -4,6 +4,7 @@ $documentroot = $_SERVER['DOCUMENT_ROOT'] . "/";
 session_start();
 require $documentroot . "/Database.php";
 
+
 if (isset($_POST['actionString']) && $_POST['actionString'] == 'login') {
     $username = $_POST['username'];
     $password = $_POST['password'];
