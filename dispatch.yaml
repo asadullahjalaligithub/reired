@@ -7,3 +7,7 @@ dispatch:
  service: stage
 - url: "www.stage.asansaraf.com/*"
  service: stage
+- url: "dev.asansaraf.com/*"
+ service: dev
+- url: "www.dev.asansaraf.com/*"
+ service: dev

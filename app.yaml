@@ -1,3 +1,5 @@
+service: stage
+
 runtime: php83 # Choose the appropriate PHP runtime version
 
 runtime_config:
@@ -88,4 +90,3 @@ env_variables:
   CLOUDSQL_PASSWORD: AdminPassword
 
   CLOUDSQL_DSN: "striped-bonfire-432413-c0:us-central1:tvacdatabase"
-
