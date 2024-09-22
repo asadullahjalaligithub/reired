@@ -1,7 +1,7 @@
 service: stage
 
 runtime: php83 # Choose the appropriate PHP runtime version
-
+instance_class: F2
 runtime_config:
   document_root: .
 
@@ -76,7 +76,7 @@ entrypoint: serve handler.php
 # Optional: Adjust the automatic scaling settings as needed
 automatic_scaling:
   min_instances: 1
-  max_instances: 10
+  max_instances: 100
   # Adjust based on your application's needs
   # min_idle_instances: 1
   # max_concurrent_requests: 50
